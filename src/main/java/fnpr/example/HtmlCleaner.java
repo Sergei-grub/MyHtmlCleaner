@@ -2,15 +2,17 @@ package fnpr.example;
 
 import org.jsoup.Jsoup;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class HtmlCleaner {
     public static void main(String[] args) {
         // Путь к файлам
-        String inputFilePath = "input.txt";
-        String outputFilePath = "output.txt";
+        String inputFilePath = new File("input.txt").getAbsolutePath();
+        String outputFilePath = new File("output.txt").getAbsolutePath();
 
 
         try {
@@ -26,7 +28,9 @@ public class HtmlCleaner {
         } catch (IOException e) {
             System.out.println("Ошибка при работе с файлами: " + e.getMessage());
         }
+
+        // Ожидание нажатия клавиши перед закрытием
+        System.out.println("Нажмите Enter для выхода...");
+        new Scanner(System.in).nextLine();
     }
 }
-
-
