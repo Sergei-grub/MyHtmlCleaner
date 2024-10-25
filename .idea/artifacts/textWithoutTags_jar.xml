@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="textWithoutTags:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/textWithoutTags_jar</output-path>
+    <root id="archive" name="textWithoutTags.jar">
+      <element id="module-output" name="textWithoutTags" />
+    </root>
+  </artifact>
+</component>
