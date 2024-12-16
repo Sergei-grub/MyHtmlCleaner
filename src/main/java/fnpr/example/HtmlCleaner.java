@@ -16,14 +16,14 @@ public class HtmlCleaner {
 
 
         try {
-            // Чтение текста из файла input.txt
-            String textWithTags = new String(Files.readAllBytes(Paths.get(inputFilePath)));
+            // Чтение текста из input.txt с кодировкой UTF-8
+            String textWithTags = Files.readString(Paths.get(inputFilePath));
 
             // Удаление HTML-тегов с помощью Jsoup
             String cleanedText = Jsoup.parse(textWithTags).text();
 
-            // Запись очищенного текста в файл output.txt
-            Files.write(Paths.get(outputFilePath), cleanedText.getBytes());
+            // Запись очищенного текста в output.txt с кодировкой UTF-8
+            Files.writeString(Paths.get(outputFilePath), cleanedText);
             System.out.println("Теги успешно удалены. Результат сохранен в output.txt.");
         } catch (IOException e) {
             System.out.println("Ошибка при работе с файлами: " + e.getMessage());

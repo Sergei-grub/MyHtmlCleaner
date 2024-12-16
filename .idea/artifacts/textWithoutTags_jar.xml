@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/textWithoutTags_jar</output-path>
     <root id="archive" name="textWithoutTags.jar">
       <element id="module-output" name="textWithoutTags" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../jsoup-1.18.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
