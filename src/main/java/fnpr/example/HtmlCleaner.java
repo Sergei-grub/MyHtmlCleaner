@@ -10,10 +10,16 @@ import java.util.Scanner;
 
 public class HtmlCleaner {
     public static void main(String[] args) {
-        // Путь к файлам
-        String inputFilePath = new File("input.txt").getAbsolutePath();
-        String outputFilePath = new File("output.txt").getAbsolutePath();
+        // Получаем текущую рабочую директорию
+        String currentDir = System.getProperty("user.dir");
 
+        // Определяем относительные пути к файлам
+        String inputFilePath = currentDir + File.separator + "input.txt";
+        String outputFilePath = currentDir + File.separator + "output.txt";
+
+        // Создаем файлы, если они не существуют
+        createFileIfNotExists(inputFilePath);
+        createFileIfNotExists(outputFilePath);
 
         try {
             // Чтение текста из input.txt с кодировкой UTF-8
@@ -32,5 +38,22 @@ public class HtmlCleaner {
         // Ожидание нажатия клавиши перед закрытием
         System.out.println("Нажмите Enter для выхода...");
         new Scanner(System.in).nextLine();
+    }
+
+    private static void createFileIfNotExists(String filePath) {
+        File file = new File(filePath);
+        if (!file.exists()) {
+            try {
+                if (file.createNewFile()) {
+                    System.out.println("Файл создан: " + filePath);
+                } else {
+                    System.out.println("Не удалось создать файл: " + filePath);
+                }
+            } catch (IOException e) {
+                System.out.println("Ошибка при создании файла: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Файл уже существует: " + filePath);
+        }
     }
 }
